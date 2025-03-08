@@ -1,0 +1,48 @@
+﻿@model MiBibliotecaDigital.Models.Prestamos
+
+@{
+    ViewData["Title"] = "Editar Préstamo";
+}
+
+<h2>Editar Préstamo</h2>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="PrestamoId" />
+
+    <div class="mb-3">
+        <label class="form-label">Usuario</label>
+        <input asp-for="UsuarioId" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Libro</label>
+        <input asp-for="LibroId" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Fecha de Préstamo</label>
+        <input asp-for="FechaPrestamo" type="date" class="form-control" readonly />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Fecha de Devolución Programada</label>
+        <input asp-for="FechaDevolucionProgramada" type="date" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Fecha de Devolución Real</label>
+        <input asp-for="FechaDevolucionReal" type="date" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Estado</label>
+        <select asp-for="Estado" class="form-select">
+            <option value="Activo">Activo</option>
+            <option value="Finalizado">Finalizado</option>
+            <option value="Vencido">Vencido</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Guardar Cambios</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

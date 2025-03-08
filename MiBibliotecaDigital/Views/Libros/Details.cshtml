@@ -1,0 +1,16 @@
+﻿@model MiBibliotecaDigital.Models.Libros
+
+@{
+    ViewData["Title"] = "Detalles del Libro";
+}
+
+<h2>Detalles del Libro</h2>
+
+<p><strong>Título:</strong> @Model.Titulo</p>
+<p><strong>Categoría:</strong> @Model.CategoriaId</p>
+<p><strong>Año de Publicación:</strong> @Model.AñoPublicacion</p>
+<p><strong>Editorial:</strong> @Model.Editorial</p>
+<p><strong>Disponibilidad:</strong> @Model.Disponibilidad</p>
+
+<a asp-action="Edit" asp-route-id="@Model.LibroId" class="btn btn-warning">Editar</a>
+<a asp-action="Index" class="btn btn-secondary">Volver a la lista</a>

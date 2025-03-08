@@ -1,0 +1,43 @@
+﻿@model MiBibliotecaDigital.Models.Libros
+
+@{
+    ViewData["Title"] = "Editar Libro";
+}
+
+<h2>Editar Libro</h2>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="LibroId" />
+
+    <div class="mb-3">
+        <label class="form-label">Título</label>
+        <input asp-for="Titulo" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Categoría</label>
+        <input asp-for="CategoriaId" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Año de Publicación</label>
+        <input asp-for="AñoPublicacion" type="number" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Editorial</label>
+        <input asp-for="Editorial" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Disponibilidad</label>
+        <select asp-for="Disponibilidad" class="form-select">
+            <option value="Disponible">Disponible</option>
+            <option value="Prestado">Prestado</option>
+            <option value="En mantenimiento">En mantenimiento</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Guardar Cambios</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
