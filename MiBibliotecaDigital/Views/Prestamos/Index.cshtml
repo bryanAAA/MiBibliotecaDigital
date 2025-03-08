@@ -4,38 +4,40 @@
     ViewData["Title"] = "Lista de Préstamos";
 }
 
-<h1>Préstamos</h1>
+<div class="container mt-4">
+    <h2 class="text-center">Lista de Préstamos</h2>
 
-<p>
-    <a asp-action="Create" class="btn btn-primary">Nuevo Préstamo</a>
-</p>
+    <a asp-action="Form" class="btn btn-success mb-3">
+        <i class="bi bi-plus-lg"></i> Registrar Préstamo
+    </a>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Usuario</th>
-            <th>Libro</th>
-            <th>Fecha de Préstamo</th>
-            <th>Fecha de Devolución</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.UsuarioId</td>
-                <td>@item.LibroId</td>
-                <td>@item.FechaPrestamo</td>
-                <td>@item.FechaDevolucionProgramada</td>
-                <td>@item.Estado</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.PrestamoId" class="btn btn-warning">Editar</a>
-                    <a asp-action="Details" asp-route-id="@item.PrestamoId" class="btn btn-info">Detalles</a>
-                    <a asp-action="Delete" asp-route-id="@item.PrestamoId" class="btn btn-danger">Eliminar</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+    <table class="table table-striped">
+        <thead>
+            <tr><th>Usuario ID</th><th>Libro ID</th><th>Fecha Préstamo</th><th>Acciones</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var prestamo in Model)
+            {
+                <tr>
+                    <td>@prestamo.UsuarioId</td>
+                    <td>@prestamo.LibroId</td>
+                    <td>@prestamo.FechaPrestamo.ToShortDateString()</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@prestamo.PrestamoId" class="btn btn-primary btn-sm">
+                            <i class="bi bi-eye"></i>
+                        </a>
+                        <a asp-action="Form" asp-route-id="@prestamo.PrestamoId" class="btn btn-warning btn-sm">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                        <form asp-action="Delete" method="post" class="d-inline">
+                            <input type="hidden" name="id" value="@prestamo.PrestamoId" />
+                            <button type="submit" class="btn btn-danger btn-sm">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

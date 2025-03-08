@@ -1,0 +1,37 @@
+﻿@model MiBibliotecaDigital.Models.Prestamos
+
+@{
+    bool esEdicion = Model?.PrestamoId > 0;
+    ViewData["Title"] = esEdicion ? "Editar Préstamo" : "Registrar Préstamo";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center">@ViewData["Title"]</h2>
+
+    <form asp-action="@(esEdicion ? "Edit" : "Create")" method="post">
+        <input type="hidden" asp-for="PrestamoId" />
+
+        <div class="mb-3">
+            <label class="form-label">Usuario</label>
+            <input asp-for="UsuarioId" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Libro</label>
+            <input asp-for="LibroId" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Fecha de Préstamo</label>
+            <input asp-for="FechaPrestamo" type="date" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Fecha de Devolución Programada</label>
+            <input asp-for="FechaDevolucionProgramada" type="date" class="form-control" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary">@ViewData["Title"]</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>

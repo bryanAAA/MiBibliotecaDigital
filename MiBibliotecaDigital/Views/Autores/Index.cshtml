@@ -4,34 +4,45 @@
     ViewData["Title"] = "Lista de Autores";
 }
 
-<h1>Autores</h1>
+<div class="container mt-4">
+    <h2 class="text-center">Lista de Autores</h2>
+    
+    <a asp-action="Form" class="btn btn-success mb-3">
+        <i class="bi bi-plus-lg"></i> Agregar Autor
+    </a>
 
-<p>
-    <a asp-action="Create" class="btn btn-primary">Nuevo Autor</a>
-</p>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Apellidos</th>
-            <th>Nacionalidad</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+    <table class="table table-striped">
+        <thead>
             <tr>
-                <td>@item.Nombre</td>
-                <td>@item.Apellidos</td>
-                <td>@item.Nacionalidad</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.AutorId" class="btn btn-warning">Editar</a>
-                    <a asp-action="Details" asp-route-id="@item.AutorId" class="btn btn-info">Detalles</a>
-                    <a asp-action="Delete" asp-route-id="@item.AutorId" class="btn btn-danger">Eliminar</a>
-                </td>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Nacionalidad</th>
+                <th>Acciones</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var autor in Model)
+            {
+                <tr>
+                    <td>@autor.Nombre</td>
+                    <td>@autor.Apellidos</td>
+                    <td>@autor.Nacionalidad</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@autor.AutorId" class="btn btn-primary btn-sm">
+                            <i class="bi bi-eye"></i>
+                        </a>
+                        <a asp-action="Form" asp-route-id="@autor.AutorId" class="btn btn-warning btn-sm">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                        <form asp-action="Delete" method="post" class="d-inline">
+                            <input type="hidden" name="id" value="@autor.AutorId" />
+                            <button type="submit" class="btn btn-danger btn-sm">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

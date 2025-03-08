@@ -1,0 +1,22 @@
+﻿@model MiBibliotecaDigital.Models.Usuarios
+
+@{
+    ViewData["Title"] = "Detalles del Usuario";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center">@ViewData["Title"]</h2>
+
+    <table class="table">
+        <tr><th>Nombre Completo:</th><td>@Model.NombreCompleto</td></tr>
+        <tr><th>Correo Electrónico:</th><td>@Model.CorreoElectronico</td></tr>
+    </table>
+
+    <a asp-action="Index" class="btn btn-secondary">Regresar</a>
+    <a asp-action="Edit" asp-route-id="@Model.UsuarioId" class="btn btn-warning">Editar</a>
+
+    <form asp-action="Delete" method="post" class="d-inline">
+        <input type="hidden" name="id" value="@Model.UsuarioId" />
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+    </form>
+</div>

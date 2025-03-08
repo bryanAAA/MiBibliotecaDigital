@@ -58,6 +58,30 @@ namespace MiBibliotecaDigital.Migrations
                     b.HasKey("AutorId");
 
                     b.ToTable("Autores");
+
+                    b.HasData(
+                        new
+                        {
+                            AutorId = 1,
+                            Apellidos = "Asimov",
+                            Biografia = "Autor de ciencia ficción y divulgación científica.",
+                            FechaCreacion = new DateTime(2025, 3, 7, 21, 12, 8, 41, DateTimeKind.Local).AddTicks(5856),
+                            FechaModificacion = new DateTime(2025, 3, 7, 21, 12, 8, 41, DateTimeKind.Local).AddTicks(5857),
+                            FechaNacimiento = new DateTime(1920, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Nacionalidad = "Rusa",
+                            Nombre = "Isaac"
+                        },
+                        new
+                        {
+                            AutorId = 2,
+                            Apellidos = "Harari",
+                            Biografia = "Historiador y escritor de Sapiens.",
+                            FechaCreacion = new DateTime(2025, 3, 7, 21, 12, 8, 41, DateTimeKind.Local).AddTicks(5860),
+                            FechaModificacion = new DateTime(2025, 3, 7, 21, 12, 8, 41, DateTimeKind.Local).AddTicks(5861),
+                            FechaNacimiento = new DateTime(1976, 2, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Nacionalidad = "Israelí",
+                            Nombre = "Yuval"
+                        });
                 });
 
             modelBuilder.Entity("MiBibliotecaDigital.Models.AutoresLibros", b =>
@@ -115,6 +139,26 @@ namespace MiBibliotecaDigital.Migrations
                     b.HasKey("CategoriaId");
 
                     b.ToTable("Categorias");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoriaId = 1,
+                            Descripcion = "Libros de ciencia ficción y fantasía",
+                            Estado = "Activa",
+                            FechaCreacion = new DateTime(2025, 3, 7, 21, 12, 8, 41, DateTimeKind.Local).AddTicks(5830),
+                            FechaModificacion = new DateTime(2025, 3, 7, 21, 12, 8, 41, DateTimeKind.Local).AddTicks(5830),
+                            Nombre = "Ciencia Ficción"
+                        },
+                        new
+                        {
+                            CategoriaId = 2,
+                            Descripcion = "Libros de historia mundial",
+                            Estado = "Activa",
+                            FechaCreacion = new DateTime(2025, 3, 7, 21, 12, 8, 41, DateTimeKind.Local).AddTicks(5833),
+                            FechaModificacion = new DateTime(2025, 3, 7, 21, 12, 8, 41, DateTimeKind.Local).AddTicks(5833),
+                            Nombre = "Historia"
+                        });
                 });
 
             modelBuilder.Entity("MiBibliotecaDigital.Models.Libros", b =>
@@ -164,6 +208,36 @@ namespace MiBibliotecaDigital.Migrations
                     b.HasKey("LibroId");
 
                     b.ToTable("Libros");
+
+                    b.HasData(
+                        new
+                        {
+                            LibroId = 1,
+                            AñoPublicacion = 1951,
+                            CategoriaId = 1,
+                            Disponibilidad = "Disponible",
+                            Editorial = "Gnome Press",
+                            FechaCreacion = new DateTime(2025, 3, 7, 21, 12, 8, 41, DateTimeKind.Local).AddTicks(5879),
+                            FechaModificacion = new DateTime(2025, 3, 7, 21, 12, 8, 41, DateTimeKind.Local).AddTicks(5879),
+                            Formato = "PDF",
+                            ImagenPortada = "fundacion.jpg",
+                            Sinopsis = "Una de las sagas más famosas de ciencia ficción.",
+                            Titulo = "Fundación"
+                        },
+                        new
+                        {
+                            LibroId = 2,
+                            AñoPublicacion = 2011,
+                            CategoriaId = 2,
+                            Disponibilidad = "Disponible",
+                            Editorial = "Debate",
+                            FechaCreacion = new DateTime(2025, 3, 7, 21, 12, 8, 41, DateTimeKind.Local).AddTicks(5883),
+                            FechaModificacion = new DateTime(2025, 3, 7, 21, 12, 8, 41, DateTimeKind.Local).AddTicks(5883),
+                            Formato = "EPUB",
+                            ImagenPortada = "sapiens.jpg",
+                            Sinopsis = "Historia de la humanidad contada de forma fascinante.",
+                            Titulo = "Sapiens"
+                        });
                 });
 
             modelBuilder.Entity("MiBibliotecaDigital.Models.Prestamos", b =>
@@ -206,6 +280,32 @@ namespace MiBibliotecaDigital.Migrations
                     b.HasKey("PrestamoId");
 
                     b.ToTable("Prestamos");
+
+                    b.HasData(
+                        new
+                        {
+                            PrestamoId = 1,
+                            Comentarios = "Buena condición",
+                            Estado = "Activo",
+                            FechaCreacion = new DateTime(2025, 3, 7, 21, 12, 8, 41, DateTimeKind.Local).AddTicks(5907),
+                            FechaDevolucionProgramada = new DateTime(2025, 3, 22, 21, 12, 8, 41, DateTimeKind.Local).AddTicks(5899),
+                            FechaModificacion = new DateTime(2025, 3, 7, 21, 12, 8, 41, DateTimeKind.Local).AddTicks(5907),
+                            FechaPrestamo = new DateTime(2025, 3, 7, 21, 12, 8, 41, DateTimeKind.Local).AddTicks(5899),
+                            LibroId = 1,
+                            UsuarioId = 1
+                        },
+                        new
+                        {
+                            PrestamoId = 2,
+                            Comentarios = "Nuevo",
+                            Estado = "Activo",
+                            FechaCreacion = new DateTime(2025, 3, 7, 21, 12, 8, 41, DateTimeKind.Local).AddTicks(5912),
+                            FechaDevolucionProgramada = new DateTime(2025, 3, 22, 21, 12, 8, 41, DateTimeKind.Local).AddTicks(5910),
+                            FechaModificacion = new DateTime(2025, 3, 7, 21, 12, 8, 41, DateTimeKind.Local).AddTicks(5912),
+                            FechaPrestamo = new DateTime(2025, 3, 7, 21, 12, 8, 41, DateTimeKind.Local).AddTicks(5910),
+                            LibroId = 2,
+                            UsuarioId = 2
+                        });
                 });
 
             modelBuilder.Entity("MiBibliotecaDigital.Models.Usuarios", b =>
@@ -251,6 +351,34 @@ namespace MiBibliotecaDigital.Migrations
                     b.HasKey("UsuarioId");
 
                     b.ToTable("Usuarios");
+
+                    b.HasData(
+                        new
+                        {
+                            UsuarioId = 1,
+                            CantonId = 1,
+                            Contraseña = "123456",
+                            CorreoElectronico = "juanperez@email.com",
+                            Estado = "Activo",
+                            FechaRegistro = new DateTime(2025, 3, 7, 21, 12, 8, 41, DateTimeKind.Local).AddTicks(5614),
+                            FechaUltimaModificacion = new DateTime(2025, 3, 7, 21, 12, 8, 41, DateTimeKind.Local).AddTicks(5614),
+                            NombreCompleto = "Juan Pérez",
+                            ProvinciaId = 1,
+                            Telefono = "8888-8888"
+                        },
+                        new
+                        {
+                            UsuarioId = 2,
+                            CantonId = 3,
+                            Contraseña = "abcdef",
+                            CorreoElectronico = "mariagonzalez@email.com",
+                            Estado = "Activo",
+                            FechaRegistro = new DateTime(2025, 3, 7, 21, 12, 8, 41, DateTimeKind.Local).AddTicks(5617),
+                            FechaUltimaModificacion = new DateTime(2025, 3, 7, 21, 12, 8, 41, DateTimeKind.Local).AddTicks(5618),
+                            NombreCompleto = "María González",
+                            ProvinciaId = 2,
+                            Telefono = "7777-7777"
+                        });
                 });
 #pragma warning restore 612, 618
         }

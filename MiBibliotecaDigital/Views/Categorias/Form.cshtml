@@ -1,0 +1,22 @@
+﻿@model MiBibliotecaDigital.Models.Categorias
+
+@{
+    ViewData["Title"] = "Detalles de la Categoría";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center">@ViewData["Title"]</h2>
+
+    <table class="table">
+        <tr><th>Nombre:</th><td>@Model.Nombre</td></tr>
+        <tr><th>Descripción:</th><td>@Model.Descripcion</td></tr>
+    </table>
+
+    <a asp-action="Index" class="btn btn-secondary">Regresar</a>
+    <a asp-action="Edit" asp-route-id="@Model.CategoriaId" class="btn btn-warning">Editar</a>
+
+    <form asp-action="Delete" method="post" class="d-inline">
+        <input type="hidden" name="id" value="@Model.CategoriaId" />
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+    </form>
+</div>
