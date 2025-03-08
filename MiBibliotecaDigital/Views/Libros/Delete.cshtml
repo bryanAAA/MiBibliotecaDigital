@@ -1,0 +1,18 @@
+﻿@model MiBibliotecaDigital.Models.Libro
+
+@{
+    ViewData["Title"] = "Eliminar Libro";
+}
+
+<h2>¿Estás seguro de que quieres eliminar este libro?</h2>
+
+<p><strong>Título:</strong> @Model.Titulo</p>
+<p><strong>Categoría:</strong> @Model.CategoriaId</p>
+<p><strong>Año de Publicación:</strong> @Model.AñoPublicacion</p>
+<p><strong>Editorial:</strong> @Model.Editorial</p>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="LibroId" />
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

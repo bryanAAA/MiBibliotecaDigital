@@ -1,0 +1,17 @@
+﻿@model MiBibliotecaDigital.Models.Prestamos
+
+@{
+    ViewData["Title"] = "Detalles del Préstamo";
+}
+
+<h2>Detalles del Préstamo</h2>
+
+<p><strong>Usuario ID:</strong> @Model.UsuarioId</p>
+<p><strong>Libro ID:</strong> @Model.LibroId</p>
+<p><strong>Fecha de Préstamo:</strong> @Model.FechaPrestamo.ToShortDateString()</p>
+<p><strong>Fecha de Devolución Programada:</strong> @Model.FechaDevolucionProgramada.ToShortDateString()</p>
+<p><strong>Fecha de Devolución Real:</strong> @(Model.FechaDevolucionReal?.ToShortDateString() ?? "No devuelto")</p>
+<p><strong>Estado:</strong> @Model.Estado</p>
+
+<a asp-action="Edit" asp-route-id="@Model.PrestamoId" class="btn btn-warning">Editar</a>
+<a asp-action="Index" class="btn btn-secondary">Volver a la lista</a>

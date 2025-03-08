@@ -1,0 +1,41 @@
+﻿@model IEnumerable<MiBibliotecaDigital.Models.Prestamos>
+
+@{
+    ViewData["Title"] = "Lista de Préstamos";
+}
+
+<h1>Préstamos</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Nuevo Préstamo</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Usuario</th>
+            <th>Libro</th>
+            <th>Fecha de Préstamo</th>
+            <th>Fecha de Devolución</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.UsuarioId</td>
+                <td>@item.LibroId</td>
+                <td>@item.FechaPrestamo</td>
+                <td>@item.FechaDevolucionProgramada</td>
+                <td>@item.Estado</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.PrestamoId" class="btn btn-warning">Editar</a>
+                    <a asp-action="Details" asp-route-id="@item.PrestamoId" class="btn btn-info">Detalles</a>
+                    <a asp-action="Delete" asp-route-id="@item.PrestamoId" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
