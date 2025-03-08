@@ -10,28 +10,35 @@
     <a asp-action="Create" class="btn btn-primary">Nuevo Usuario</a>
 </p>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Nombre Completo</th>
-            <th>Correo Electrónico</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+@if (!Model.Any())
+{
+    <div class="alert alert-warning">No hay usuarios registrados.</div>
+}
+else
+{
+    <table class="table">
+        <thead>
             <tr>
-                <td>@item.NombreCompleto</td>
-                <td>@item.CorreoElectronico</td>
-                <td>@item.Estado</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.UsuarioId" class="btn btn-warning">Editar</a>
-                    <a asp-action="Details" asp-route-id="@item.UsuarioId" class="btn btn-info">Detalles</a>
-                    <a asp-action="Delete" asp-route-id="@item.UsuarioId" class="btn btn-danger">Eliminar</a>
-                </td>
+                <th>Nombre Completo</th>
+                <th>Correo Electrónico</th>
+                <th>Estado</th>
+                <th>Acciones</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.NombreCompleto</td>
+                    <td>@item.CorreoElectronico</td>
+                    <td>@item.Estado</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.UsuarioId" class="btn btn-warning">Editar</a>
+                        <a asp-action="Details" asp-route-id="@item.UsuarioId" class="btn btn-info">Detalles</a>
+                        <a asp-action="Delete" asp-route-id="@item.UsuarioId" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
