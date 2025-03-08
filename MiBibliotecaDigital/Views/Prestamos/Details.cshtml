@@ -4,14 +4,21 @@
     ViewData["Title"] = "Detalles del Préstamo";
 }
 
-<h2>Detalles del Préstamo</h2>
+<div class="container mt-4">
+    <h2 class="text-center">@ViewData["Title"]</h2>
 
-<p><strong>Usuario ID:</strong> @Model.UsuarioId</p>
-<p><strong>Libro ID:</strong> @Model.LibroId</p>
-<p><strong>Fecha de Préstamo:</strong> @Model.FechaPrestamo.ToShortDateString()</p>
-<p><strong>Fecha de Devolución Programada:</strong> @Model.FechaDevolucionProgramada.ToShortDateString()</p>
-<p><strong>Fecha de Devolución Real:</strong> @(Model.FechaDevolucionReal?.ToShortDateString() ?? "No devuelto")</p>
-<p><strong>Estado:</strong> @Model.Estado</p>
+    <table class="table">
+        <tr><th>Usuario ID:</th><td>@Model.UsuarioId</td></tr>
+        <tr><th>Libro ID:</th><td>@Model.LibroId</td></tr>
+        <tr><th>Fecha de Préstamo:</th><td>@Model.FechaPrestamo.ToShortDateString()</td></tr>
+        <tr><th>Fecha de Devolución Programada:</th><td>@Model.FechaDevolucionProgramada.ToShortDateString()</td></tr>
+    </table>
 
-<a asp-action="Edit" asp-route-id="@Model.PrestamoId" class="btn btn-warning">Editar</a>
-<a asp-action="Index" class="btn btn-secondary">Volver a la lista</a>
+    <a asp-action="Index" class="btn btn-secondary">Regresar</a>
+    <a asp-action="Edit" asp-route-id="@Model.PrestamoId" class="btn btn-warning">Editar</a>
+
+    <form asp-action="Delete" method="post" class="d-inline">
+        <input type="hidden" name="id" value="@Model.PrestamoId" />
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+    </form>
+</div>
